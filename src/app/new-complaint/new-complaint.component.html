@@ -1,0 +1,44 @@
+<form (ngSubmit)="f.form.valid && executeCaptureComplaint()" #f="ngForm">
+    <div class="d-flex justify-content-center">
+        <div class="d-flex row justify-content-center" style="padding: 10px;">
+            <div class="d-flex row " style="padding: 10px;">
+                <span class="col">Selecciona una Empresa:</span>
+                <select class="form-control col" (change)="selectCompany($event)"
+                >
+                    <option *ngFor="let company of companies" [ngValue]="company.empresas" >{{company.empresas}}</option>
+                </select>
+            </div>
+            <div class="d-flex row" style="padding: 10px;">
+                <span class="col">Selecciona un Pais:</span>
+                <select class="form-control col" (change)="selectCountry($event)">
+                    <option *ngFor="let country of countries" [ngValue]="country.paises">{{country.paises}}
+                    </option>
+                </select>
+            </div>
+            <div class="d-flex row" style="padding: 10px;">
+                <span class="col">Selecciona un Estado:</span>
+                <select class="form-control col" *ngIf="companies" (change)="selectState($event)">
+                    <option *ngFor="let state of states" [ngValue]="state.estados" >{{state.estados}}</option>
+                </select>
+            </div>
+            <div class="d-flex row">
+                <span class="col">Ingresa el numero de centro:</span>
+                <input class="form-control col" type="number" placeholder="Numero de centro" name="numCentro"
+                    [(ngModel)]="numCentro" required>
+            </div>
+            <div class="d-flex justify-content-center row " style="padding: 10px;">
+                <h2 style="color: red;" class="row justify-content-center">¿Usted quiere permanecer anonimo?</h2>
+                <button class="btn btn-warning row justify-content-center" style="margin: 10px; width: 20rem; "
+                    type="submit"
+                    >Si </button>
+                <button class="btn btn-warning row justify-content-center" style="margin: 10px; width: 20rem; ">No
+                </button>
+            </div>
+            <div *ngIf="resultCatalog" class="d-flex justify-content-center row alert alert-success" role="alert"
+                style="padding: 10px; width: 30rem;">
+                <span style="color: red;" class="row justify-content-center">{{errorMessages}}</span>
+            </div>
+        </div>
+
+    </div>
+</form>

@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center">
+    <div class="d-flex row justify-content-center" style="padding: 10px;">
+        <div class="d-flex row " style="padding: 10px;">
+            <span class="col" style="color: rgb(68, 1, 132)">Datos de la Denuncia</span>
+        </div>
+        <div class="d-flex row " style="padding: 10px;">
+            <span class="col" style="color: rgb(255, 162, 0)">Coppel</span>
+        </div>
+        <h2> {{txtPais}}</h2>
+        <h2 *ngIf="_ePersonalInfo.personalInfo$ | async as personalInfo">{{ personalInfo | json }}</h2>
+
+
+    </div>
+</div>
